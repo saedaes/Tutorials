@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Register: 
+  Name: MyString
+  LastName: MyString
+  SecondLastName: MyString
+  Cellphone: 
+  IsAssessor: false
+  TeacherAssessor: 1
+
+two:
+  Register: 
+  Name: MyString
+  LastName: MyString
+  SecondLastName: MyString
+  Cellphone: 
+  IsAssessor: false
+  TeacherAssessor: 1

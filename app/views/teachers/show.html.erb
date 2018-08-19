@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Usuario UACH:</strong>
+  <%= @teacher.TeacherUser %>
+</p>
+
+<p>
+  <strong>N&uacute;mero Empleado:</strong>
+  <%= @teacher.EmployeeNumber %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @teacher.Name %>
+</p>
+
+<p>
+  <strong>Apellidos:</strong>
+  <%= @teacher.LastName %> &nbsp; <%= @teacher.SecondLastName %>
+</p>
+
+<p>
+  <strong>Celular:</strong>
+  <%= @teacher.Cellphone %>
+</p>
+
+<p>
+  <strong>Correo Electr&oacute;nico:</strong>
+  <%= @teacher.Email %>
+</p>
+
+<p>
+  <strong>Es Administrador:</strong>
+  <%= @teacher.IsAdmin %>
+</p>
+
+<%= link_to 'Editar', edit_teacher_path(@teacher) %> |
+<%= link_to 'Volver', teachers_path %>
