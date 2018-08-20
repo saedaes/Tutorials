@@ -10,20 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_19_034002) do
+ActiveRecord::Schema.define(version: 2018_08_20_041147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "examples", force: :cascade do |t|
-    t.string "name"
-    t.string "last_name"
-    t.text "cellphone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.decimal "number"
-    t.text "Adress"
-  end
 
   create_table "places", force: :cascade do |t|
     t.string "Name"
@@ -33,18 +23,11 @@ ActiveRecord::Schema.define(version: 2018_08_19_034002) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.integer "other"
+  create_table "profiles", force: :cascade do |t|
+    t.string "Name"
+    t.string "Description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "student", primary_key: "idstudent", id: :integer, default: -> { "nextval('test1'::regclass)" }, force: :cascade do |t|
-    t.string "name", limit: 100
-    t.string "lastname", limit: 100
-    t.date "fechanac"
   end
 
   create_table "students", force: :cascade do |t|
@@ -54,7 +37,14 @@ ActiveRecord::Schema.define(version: 2018_08_19_034002) do
     t.string "SecondLastName"
     t.bigint "Cellphone"
     t.boolean "IsAssessor"
-    t.integer "TeacherAssessor"
+    t.string "TeacherAssessor"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "subjects", force: :cascade do |t|
+    t.string "Name"
+    t.string "Type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -68,6 +58,18 @@ ActiveRecord::Schema.define(version: 2018_08_19_034002) do
     t.bigint "Cellphone"
     t.string "Email"
     t.boolean "IsAdmin"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "UserAccount"
+    t.string "Name"
+    t.string "LastName"
+    t.string "SecondLastName"
+    t.string "Cellphone"
+    t.string "Email"
+    t.integer "IdProfile"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

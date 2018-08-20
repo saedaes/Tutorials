@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :users
+  resources :profiles
+  resources :subjects
   resources :students
   resources :teachers
   root to: redirect('/places')

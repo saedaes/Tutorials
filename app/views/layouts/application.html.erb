@@ -18,17 +18,23 @@
 
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="teachers">Maestros <span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+          <%= link_to 'Maestros', teachers_path, class:'nav-link' %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="places">Lugares</a>
+          <%= link_to 'Alumnos', students_path, class:'nav-link' %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="students">Alumnos</a>
+          <%= link_to 'Usuarios', users_path, class:'nav-link' %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Materias</a>
+          <%= link_to 'Lugares', places_path, class:'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Materias', subjects_path, class:'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Perfiles', profiles_path, class:'nav-link' %>
         </li>
       </ul>
       <form class="form-inline">

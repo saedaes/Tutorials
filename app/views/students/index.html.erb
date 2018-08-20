@@ -22,7 +22,7 @@
         <td><%= student.Name %></td>
         <td><%= student.LastName %> <%= student.SecondLastName %></td>
         <td><%= student.Cellphone %></td>
-        <td><%= student.IsAssessor %></td>
+        <td><%= if student.IsAssessor then 'Sí' else 'No' end %></td>
         <td><%= student.TeacherAssessor %></td>
         <td style="text-align:center;"><%= link_to 'Ver', student %></td>
         <td style="text-align:center;"><%= link_to 'Editar', edit_student_path(student) %></td>

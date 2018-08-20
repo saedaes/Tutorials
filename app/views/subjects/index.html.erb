@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Materias</h1>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Materia</th>
+      <th>Tipo</th>
+      <th colspan="3">Opciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @subjects.each do |subject| %>
+      <tr>
+        <td><%= subject.Name %></td>
+        <td><%= subject.Type %></td>
+        <td style="text-align:center;"><%= link_to 'Ver', subject %></td>
+        <td style="text-align:center;"><%= link_to 'Editar', edit_subject_path(subject) %></td>
+        <td style="text-align:center;"><%= link_to 'Eliminar', subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Crear Nueva Materia', new_subject_path, class:'btn btn-outline-info' %>
