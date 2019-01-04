@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  StudentRegister: 
+  IdShedule: 
+  Date: 2018-08-22
+  Topic: MyString
+
+two:
+  StudentRegister: 
+  IdShedule: 
+  Date: 2018-08-22
+  Topic: MyString

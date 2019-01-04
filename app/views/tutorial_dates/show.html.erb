@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Matr&iacute;cula:</strong>
+  <%= @tutorial_date.StudentRegister %>
+</p>
+
+<p>
+  <strong>Id Horario:</strong>
+  <%= @tutorial_date.IdShedule %>
+</p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @tutorial_date.Date %>
+</p>
+
+<p>
+  <strong>Temas:</strong>
+  <%= @tutorial_date.Topic %>
+</p>
+
+<%= link_to 'Editar', edit_tutorial_date_path(@tutorial_date) %> |
+<%= link_to 'Volver', tutorial_dates_path %>

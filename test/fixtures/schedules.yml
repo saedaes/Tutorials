@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  IdSubject: 1
+  TeacherAccount: MyString
+  IdPlace: 1
+  Day: 1
+  BeginHour: 2018-08-22 20:32:07
+  EndHour: 2018-08-22 20:32:07
+
+two:
+  IdSubject: 1
+  TeacherAccount: MyString
+  IdPlace: 1
+  Day: 1
+  BeginHour: 2018-08-22 20:32:07
+  EndHour: 2018-08-22 20:32:07

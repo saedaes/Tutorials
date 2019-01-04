@@ -41,9 +41,14 @@
     <%= form.text_field :Email %>
   </div>
 
-  <div class="field">
-    <%= form.label :Id_Perfil %>
-    <%= form.number_field :IdProfile %>
+    
+  <div class="row">
+    <div class="col-sm-1">
+        <%= form.label :Perfil  %>
+    </div>
+    <div class="col-sm-2">
+        <%= form.select :id, Profile.all.map{|t| [t.Name, t.id]}, {}, {class: "form-control"}  %>
+    </div>
   </div>
 
   <div class="actions">

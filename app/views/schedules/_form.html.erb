@@ -1,0 +1,53 @@
+<%= form_with(model: schedule, local: true) do |form| %>
+  <% if schedule.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(schedule.errors.count, "error") %> prohibited this schedule from being saved:</h2>
+
+      <ul>
+      <% schedule.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :Id_Materia %>
+    <div class="col-sm-2">
+      <%= form.select :IdSubject, Subject.all.map{|t| [t.Name, t.id]}, {}, {class: "form-control"}  %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :Maestro %>
+    <div class="col-sm-2">
+      <%= form.select :TeacherAccount, Teacher.all.map{|t| [t.Name, t.id]}, {}, {class: "form-control"}  %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :Id_Lugar %>
+    <div class="col-sm-2">
+      <%= form.select :IdPlace, Place.all.map{|t| [t.Name, t.id]}, {}, {class: "form-control"}  %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :Dia %>
+    <%= form.number_field :Day %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Hora_Inicio %>
+    <%= form.datetime_select :BeginHour %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Hora_Fin %>
+    <%= form.datetime_select :EndHour %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

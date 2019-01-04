@@ -1,0 +1,35 @@
+<%= form_with(model: teacher_place, local: true) do |form| %>
+  <% if teacher_place.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(teacher_place.errors.count, "error") %> prohibited this teacher_place from being saved:</h2>
+
+      <ul>
+      <% teacher_place.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-sm-1">
+      <%= form.label :Maestro  %>
+    </div>
+    <div class="col-sm-2">
+      <%= form.select :teacher_id, Teacher.all.map{|t| [t.Name, t.id]}, {}, {class: "form-control"}  %>
+    </div>
+  </div>
+    
+  <div class="row">
+    <div class="col-sm-1">
+      <%= form.label :Lugar  %>
+    </div>
+    <div class="col-sm-2">
+      <%= form.select :place_id, Place.all.map{|p| [p.Name, p.id]}, {}, {class: "form-control"}  %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

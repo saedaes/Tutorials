@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Asesor&iacute;a Grupal</h1>
+
+<table class="table table-striped table-bordered"   >
+  <thead>
+    <tr>
+      <th>Id Asesor&iacute;a</th>
+      <th>Matr&iacute;cula adicional</th>
+      <th colspan="3">Opciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @group_meetings.each do |group_meeting| %>
+      <tr>
+        <td><%= group_meeting.IdTutorialDate %></td>
+        <td><%= group_meeting.ExtraStudentRegistration %></td>
+        <td style="text-align:center;"><%= link_to 'Ver', group_meeting %></td>
+        <td style="text-align:center;"><%= link_to 'Editar', edit_group_meeting_path(group_meeting) %></td>
+        <td style="text-align:center;"><%= link_to 'Eliminar', group_meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nueva Asesoria grupal', new_group_meeting_path,  class:'btn btn-outline-info' %>

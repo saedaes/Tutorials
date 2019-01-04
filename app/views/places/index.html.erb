@@ -20,7 +20,7 @@
         <td><%= place.Description %></td>
         <td style="text-align:center;"><%= link_to 'Ver', place %></td>
         <td style="text-align:center;"><%= link_to 'Editar', edit_place_path(place) %></td>
-        <td style="text-align:center;"><%= link_to 'Eliminar', place, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td style="text-align:center;"><%= link_to 'Eliminar', place, method: :delete, data: { confirm: 'Seguro que deseas de eliminar este registro?' } %></td>
       </tr>
     <% end %>
   </tbody>

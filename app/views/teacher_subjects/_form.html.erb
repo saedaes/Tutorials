@@ -1,0 +1,35 @@
+<%= form_with(model: teacher_subject, local: true) do |form| %>
+  <% if teacher_subject.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(teacher_subject.errors.count, "error") %> prohibited this teacher_subject from being saved:</h2>
+
+      <ul>
+      <% teacher_subject.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-sm-1">
+      <%= form.label :Cuenta_Maestro  %>
+    </div>
+    <div class="col-sm-2">
+      <%= form.select :TeacherAccount, Teacher.all.map{|t| [t.TeacherUser, t.TeacherUser]}, {}, {class: "form-control"}  %>
+    </div>
+  </div>    
+    
+  <div class="row">
+    <div class="col-sm-1">
+      <%= form.label :Materia  %>
+    </div>
+    <div class="col-sm-2">
+      <%= form.select :IdSubject, Subject.all.map{|t| [t.Name, t.id]}, {}, {class: "form-control"}  %>
+    </div>
+  </div>    
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

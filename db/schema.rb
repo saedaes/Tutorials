@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_20_041147) do
+ActiveRecord::Schema.define(version: 2018_09_05_034753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "group_meetings", force: :cascade do |t|
+    t.bigint "IdTutorialDate"
+    t.bigint "ExtraStudentRegistration"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "places", force: :cascade do |t|
     t.string "Name"
@@ -21,11 +28,33 @@ ActiveRecord::Schema.define(version: 2018_08_20_041147) do
     t.text "Description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "teacher_id"
+    t.index ["teacher_id"], name: "index_places_on_teacher_id"
+  end
+
+  create_table "places_teachers", force: :cascade do |t|
+    t.bigint "teacher_id"
+    t.bigint "place_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_places_teachers_on_place_id"
+    t.index ["teacher_id"], name: "index_places_teachers_on_teacher_id"
   end
 
   create_table "profiles", force: :cascade do |t|
     t.string "Name"
     t.string "Description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.integer "IdSubject"
+    t.string "TeacherAccount"
+    t.integer "IdPlace"
+    t.integer "Day"
+    t.datetime "BeginHour"
+    t.datetime "EndHour"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -49,6 +78,22 @@ ActiveRecord::Schema.define(version: 2018_08_20_041147) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "teacher_places", force: :cascade do |t|
+    t.bigint "teacher_id"
+    t.bigint "place_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_teacher_places_on_place_id"
+    t.index ["teacher_id"], name: "index_teacher_places_on_teacher_id"
+  end
+
+  create_table "teacher_subjects", force: :cascade do |t|
+    t.string "TeacherAccount"
+    t.integer "IdSubject"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "teachers", force: :cascade do |t|
     t.string "TeacherUser"
     t.integer "EmployeeNumber"
@@ -58,6 +103,15 @@ ActiveRecord::Schema.define(version: 2018_08_20_041147) do
     t.bigint "Cellphone"
     t.string "Email"
     t.boolean "IsAdmin"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tutorial_dates", force: :cascade do |t|
+    t.bigint "StudentRegister"
+    t.bigint "IdShedule"
+    t.date "Date"
+    t.string "Topic"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -74,4 +128,9 @@ ActiveRecord::Schema.define(version: 2018_08_20_041147) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "places", "teachers"
+  add_foreign_key "places_teachers", "places"
+  add_foreign_key "places_teachers", "teachers"
+  add_foreign_key "teacher_places", "places"
+  add_foreign_key "teacher_places", "teachers"
 end

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id Asesor&iacute;a:</strong>
+  <%= @group_meeting.IdTutorialDate %>
+</p>
+
+<p>
+  <strong>Matr&iacute;cula adicional:</strong>
+  <%= @group_meeting.ExtraStudentRegistration %>
+</p>
+
+<%= link_to 'Editar', edit_group_meeting_path(@group_meeting) %> |
+<%= link_to 'Volver', group_meetings_path %>

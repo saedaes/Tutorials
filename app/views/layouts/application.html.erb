@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Tutorials</title>
+    <title>Asesor&iacute;as FCQ</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -25,6 +25,9 @@
           <%= link_to 'Alumnos', students_path, class:'nav-link' %>
         </li>
         <li class="nav-item">
+          <%= link_to 'Horarios de Aseseorias', schedules_path, class:'nav-link' %>
+        </li>
+        <li class="nav-item">
           <%= link_to 'Usuarios', users_path, class:'nav-link' %>
         </li>
         <li class="nav-item">
@@ -36,11 +39,24 @@
         <li class="nav-item">
           <%= link_to 'Perfiles', profiles_path, class:'nav-link' %>
         </li>
+        <li class="nav-item">
+          <%= link_to 'Asesor-Lugar', teacher_places_path, class:'nav-link' %>
+        </li>
+        
+        <li class="nav-item">
+          <%= link_to 'Asesor-Materia', teacher_subjects_path, class:'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Asesorias programadas', tutorial_dates_path, class:'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Asesorias grupales', group_meetings_path, class:'nav-link' %>
+        </li>
+         <li class="nav-item">
+          <%= link_to 'Salir', group_meetings_path, class:'nav-link' %>
+        </li>
       </ul>
-      <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-      </form>
+      
     </div>
   </nav>
     <div style="padding:10px;">

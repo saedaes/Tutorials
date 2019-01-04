@@ -1,0 +1,3 @@
+class TutorialDate < ApplicationRecord
+  
+end

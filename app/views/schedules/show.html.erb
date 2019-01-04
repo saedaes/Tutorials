@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id Materia:</strong>
+  <%= @schedule.IdSubject %>
+</p>
+
+<p>
+  <strong>Cuenta del Maestro:</strong>
+  <%= @schedule.teacher.Name %>
+</p>
+
+<p>
+  <strong>Id Lugar:</strong>
+  <%= @schedule.IdPlace %>
+</p>
+
+<p>
+  <strong>Day:</strong>
+  <%= @schedule.Day %>
+</p>
+
+<p>
+  <strong>Beginhour:</strong>
+  <%= @schedule.BeginHour %>
+</p>
+
+<p>
+  <strong>Endhour:</strong>
+  <%= @schedule.EndHour %>
+</p>
+
+<%= link_to 'Editar', edit_schedule_path(@schedule) %> |
+<%= link_to 'Volver', schedules_path %>

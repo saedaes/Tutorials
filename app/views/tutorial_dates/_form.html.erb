@@ -1,0 +1,37 @@
+<%= form_with(model: tutorial_date, local: true) do |form| %>
+  <% if tutorial_date.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tutorial_date.errors.count, "error") %> prohibited this tutorial_date from being saved:</h2>
+
+      <ul>
+      <% tutorial_date.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :Matricula %>
+    <%= form.text_field :StudentRegister %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Id_Horario %>
+    <%= form.text_field :IdShedule %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Fecha %>
+    <%= form.date_select :Date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Temas %>
+    <%= form.text_field :Topic %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
