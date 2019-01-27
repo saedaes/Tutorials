@@ -1,5 +1,5 @@
 class Schedule < ApplicationRecord
-     belongs_to :teacher
-     belongs_to :place
-     belongs_to :subject
+     belongs_to :teacher,  :optional => true
+     belongs_to :place,  :optional => true
+     belongs_to :subject,  :optional => true
 end

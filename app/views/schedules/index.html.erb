@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Horarios</h1>
+<h1>Asesor&iacute;as Disponibles</h1>
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th>Id_Materia</th>
+      <th>Materia</th>
       <th>Cuenta_Maestro</th>
-      <th>Id_Lugar</th>
+      <th>Lugar</th>
       <th>D&iacute;a</th>
       <th>Hora_Inicio</th>
       <th>Hora_Fin</th>
@@ -17,9 +17,9 @@
   <tbody>
     <% @schedules.each do |schedule| %>
       <tr>
-        <td><%= schedule.IdSubject %></td>
-        <td><%= schedule.TeacherAccount %></td>
-        <td><%= schedule.IdPlace %></td>
+        <td><%= Subject.find(schedule.IdSubject).Name %></td>
+        <td><%= Teacher.find(schedule.TeacherAccount).TeacherUser %></td>
+        <td><%= Place.find(schedule.IdPlace).Name %></td>
         <td><%= schedule.Day %></td>
         <td><%= schedule.BeginHour %></td>
         <td><%= schedule.EndHour %></td>
@@ -35,5 +35,5 @@
 
 <br>
 
-<%= link_to 'Crear Horario Nuevo', new_schedule_path, class:'btn btn-outline-info'  %>
+<%= link_to 'Asignar nueva asesoria', new_schedule_path, class:'btn btn-outline-info'  %>
 
