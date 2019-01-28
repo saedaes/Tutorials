@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'login/index'
   get 'home/index'
   resources :teacher_places
   resources :group_meetings
