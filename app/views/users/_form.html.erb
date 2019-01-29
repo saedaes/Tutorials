@@ -47,7 +47,7 @@
         <%= form.label :Perfil  %>
     </div>
     <div class="col-sm-2">
-        <%= form.select :id, Profile.all.map{|t| [t.Name, t.id]}, {}, {class: "form-control"}  %>
+        <%= form.select :IdProfile, Profile.all.map{|t| [t.Name, t.id]}, {}, {class: "form-control"}  %>
     </div>
   </div>
 

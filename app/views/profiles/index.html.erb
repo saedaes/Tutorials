@@ -8,7 +8,7 @@
       <th>Identificador</th>
       <th>Perfil</th>
       <th>Descripci&oacute;n</th>
-      <th colspan="3"></th>
+      <th colspan="3" style="text-align:center;">Opciones</th>
     </tr>
   </thead>
 
@@ -18,9 +18,9 @@
         <td><%= profile.id %></td>
         <td><%= profile.Name %></td>
         <td><%= profile.Description %></td>
-        <td><%= link_to 'Ver', profile %></td>
-        <td><%= link_to 'Editar', edit_profile_path(profile) %></td>
-        <td><%= link_to 'Eliminar', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td style="text-align:center;"><%= link_to profile, style: 'color:#0056b3;' do%> <span class="oi oi-eye"></span> <%end%></td>
+        <td style="text-align:center;"><%= link_to edit_profile_path(profile), style: 'color:#0056b3;' do%> <span class="oi oi-pencil"></span> <%end%></td>
+        <td style="text-align:center;"><%= link_to profile, method: :delete, data: { confirm: 'Estas seguro?' }, style: 'color:#0056b3;' do%> <span class="oi oi-trash"></span> <%end%></td>
       </tr>
     <% end %>
   </tbody>

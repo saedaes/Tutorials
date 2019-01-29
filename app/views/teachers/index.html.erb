@@ -2,7 +2,7 @@
 
 <h1>Maestros</h1>
 
-<table class="table table-striped table-bordered  " >
+<table class="table table-striped table-bordered" >
   <thead>
     <tr>
       <th>Usuario UACH</th>
@@ -28,7 +28,7 @@
         <td><%= teacher.Email %></td>
         <td><%= if teacher.IsAdmin then 'Si' else 'No' end %></td>
         <td style="text-align:center;"><%= link_to teacher, style: 'color:#0056b3;' do%> <span class="oi oi-eye"></span> <%end%></td>
-        <td style="text-align:center;"><%= link_to edit_teacher_path(teacher), style: 'color:#0056b3;' do%> <span class="oi oi-pencil"></span></span> <%end%></td>
+        <td style="text-align:center;"><%= link_to edit_teacher_path(teacher), style: 'color:#0056b3;' do%> <span class="oi oi-pencil"></span> <%end%></td>
         <td style="text-align:center;"><%= link_to teacher, method: :delete, data: { confirm: 'Estas seguro?' }, style: 'color:#0056b3;' do%> <span class="oi oi-trash"></span> <%end%></td>
       </tr>
     <% end %>

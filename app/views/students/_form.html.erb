@@ -43,7 +43,7 @@
 
   <div class="field">
     <%= form.label :Maestro_Asesor_Asignado %>
-    <%= form.text_field :TeacherAssessor %>
+    <%= form.select :TeacherAssessor, Teacher.all.map{|t| [t.Name + " " + t.LastName, t.id]}, {}, {class: ""}  %>
   </div>
 
   <div class="actions">

@@ -18,9 +18,9 @@
         <td><%= place.Name %></td>
         <td><%= place.Location %></td>
         <td><%= place.Description %></td>
-        <td style="text-align:center;"><%= link_to 'Ver', place %></td>
-        <td style="text-align:center;"><%= link_to 'Editar', edit_place_path(place) %></td>
-        <td style="text-align:center;"><%= link_to 'Eliminar', place, method: :delete, data: { confirm: 'Seguro que deseas de eliminar este registro?' } %></td>
+        <td style="text-align:center;"><%= link_to place, style: 'color:#0056b3;' do%> <span class="oi oi-eye"></span> <%end%></td>
+        <td style="text-align:center;"><%= link_to edit_place_path(place), style: 'color:#0056b3;' do%> <span class="oi oi-pencil"></span> <%end%></td>
+        <td style="text-align:center;"><%= link_to place, method: :delete, data: { confirm: 'Estas seguro?' }, style: 'color:#0056b3;' do%> <span class="oi oi-trash"></span> <%end%></td>
       </tr>
     <% end %>
   </tbody>
