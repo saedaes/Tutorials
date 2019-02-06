@@ -20,9 +20,21 @@
         <td><%= tutorial_date.IdShedule %></td>
         <td><%= tutorial_date.Date %></td>
         <td><%= tutorial_date.Topic %></td>
-        <td style="text-align:center"><%= link_to 'Ver', tutorial_date %></td>
-        <td style="text-align:center"><%= link_to 'Editar', edit_tutorial_date_path(tutorial_date) %></td>
-        <td style="text-align:center"><%= link_to 'Eliminar', tutorial_date, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        
+        <td style="text-align:center;"><%= link_to tutorial_date, style: 'color:#0056b3;' do%> 
+          <span class="oi oi-eye"></span> 
+          <%end%>
+        </td>
+        <td style="text-align:center;">
+          <%= link_to edit_tutorial_date_path(tutorial_date), style: 'color:#0056b3;' do%> 
+            <span class="oi oi-pencil"></span> 
+          <%end%>
+        </td>
+        <td style="text-align:center;">
+          <%= link_to tutorial_date, method: :delete, data: { confirm: 'Estas seguro?' }, style: 'color:#0056b3;' do%> 
+            <span class="oi oi-trash"></span>
+          <%end%>
+        </td>
       </tr>
     <% end %>
   </tbody>

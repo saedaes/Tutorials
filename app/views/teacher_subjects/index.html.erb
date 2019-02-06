@@ -18,9 +18,11 @@
         <td><%= teacher_subject.TeacherAccount %></td>
         <td><%= teacher_subject.IdSubject %></td>
          <td><%= Subject.find(teacher_subject.IdSubject).Name %></td>
-        <td style="text-align:center;"><%= link_to 'Ver', teacher_subject %></td>
-        <td style="text-align:center;"><%= link_to 'Editar', edit_teacher_subject_path(teacher_subject) %></td>
-        <td style="text-align:center;"><%= link_to 'Eliminar', teacher_subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td style="text-align:center;"><%= link_to teacher_subject, style: 'color:#0056b3;' do%> <span class="oi oi-eye"></span> <%end%></td>
+        <td style="text-align:center;"><%= link_to edit_teacher_subject_path(teacher_subject), style: 'color:#0056b3;' do%> <span class="oi oi-pencil"></span> <%end%></td>
+        <td style="text-align:center;"><%= link_to teacher_subject, method: :delete, data: { confirm: 'Estas seguro?' }, style: 'color:#0056b3;' do%> <span class="oi oi-trash"></span> <%end%></td>
+
       </tr>
     <% end %>
   </tbody>
