@@ -13,6 +13,7 @@
 //= require jquery
 //= require rails-ujs
 //= require activestorage
+//= require popper
 //= require turbolinks
 //= require moment
 //= require moment/es.js

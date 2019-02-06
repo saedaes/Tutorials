@@ -63,13 +63,13 @@ class SchedulesController < ApplicationController
 
   def consult_by_teacher
     @teacher = params[:TeacherAccount]
-    @schedule = Schedule.select(:id, :IdSubject, :BeginHour, :EndHour).where(:TeacherAccount => @teacher)
+    @schedule = Schedule.select('"schedules"."id", "schedules"."IdSubject", "subjects"."Name" AS subject_name, "places"."Name" AS place_name, "schedules","BeginHour", "schedules"."EndHour"').joins('INNER JOIN "subjects" ON "schedules"."IdSubject" = "subjects"."id" INNER JOIN "places" ON "schedules"."IdPlace" = "places"."id"').where(:TeacherAccount => @teacher)
     render :json => custom_json_for(@schedule)
   end
 
   def custom_json_for(value)
     schedules = value.map do |schedule|
-      { :title => schedule.IdSubject,
+      { :title => schedule.subject_name + ' - ' + schedule.place_name,
         :start => schedule.BeginHour,
         :end => schedule.EndHour,
         :id => schedule.id,
