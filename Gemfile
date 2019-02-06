@@ -35,6 +35,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'bootstrap', '~> 4.1.0'
 gem 'autoprefixer-rails' 
+gem 'fullcalendar-rails', '~> 3.0.0'
+gem 'momentjs-rails', '~> 2.20.1'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

@@ -5,4 +5,34 @@
 	</div>
 </div>
 
+<div class="row">
+	<div class="col-sm-12">
+		<div class="card card-body bg-light">
+			<div id='calendar' style="width:85%; margin-left:auto; margin-right:auto; background-color:white; border: 1px solid rgba(0,0,0,.125); padding: 10px 10px 10px 10px; border-radius:5px;"></div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#calendar').fullCalendar({
+			locale: 'es',
+			buttonText:{
+				today:    'Hoy',
+			  	month:    'Mes',
+			  	week:     'Semana',
+			  	day:      'Dia',
+			  	list:     'Lista'
+			},
+			events: {
+            url: '/asesorias?TeacherAccount=1',
+            error: function() {
+                alert('error');
+            }
+        },
+
+		});
+	});
+</script>
+
 

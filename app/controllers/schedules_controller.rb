@@ -61,6 +61,25 @@ class SchedulesController < ApplicationController
     end
   end
 
+  def consult_by_teacher
+    @teacher = params[:TeacherAccount]
+    @schedule = Schedule.select(:id, :IdSubject, :BeginHour, :EndHour).where(:TeacherAccount => @teacher)
+    render :json => custom_json_for(@schedule)
+  end
+
+  def custom_json_for(value)
+    schedules = value.map do |schedule|
+      { :title => schedule.IdSubject,
+        :start => schedule.BeginHour,
+        :end => schedule.EndHour,
+        :id => schedule.id,
+        :allDay => true
+      }
+    end
+    schedules.to_json
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_schedule
