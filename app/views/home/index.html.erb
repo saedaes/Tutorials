@@ -14,8 +14,8 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+<div class="modal fade" id="scheduleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Información de Tutoria</h5>
@@ -24,7 +24,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <iframe src="#" style="border:none; width:95%;"></iframe>
+        <iframe src="#" style="border:none; width:95%; height:300px;"></iframe>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -53,8 +53,8 @@
 	            }
 	        },
 	        eventClick: function(calEvent, jsEvent, view) {
-			    $('.modal').modal();
-			    $('.modal').attr('data-id',calEvent.id);
+			    $('#scheduleModal').attr('data-id', calEvent.id);
+			    $('#scheduleModal').modal();
 			},
 			eventRender: function(eventObj, $el) {
 		      $el.popover({
@@ -68,8 +68,8 @@
 		});
 	});
 
-	$('.modal').on('shown.bs.modal',function(e){
-	  $(this).find('iframe').attr('src','/schedules/1')
+	$('#scheduleModal').on('show.bs.modal',function(e){
+  		$(this).find('iframe').attr('src','/single_schedule/' + $('#scheduleModal').attr('data-id'));
 	})
 </script>
 

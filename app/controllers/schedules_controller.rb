@@ -67,6 +67,13 @@ class SchedulesController < ApplicationController
     render :json => custom_json_for(@schedule)
   end
 
+  # GET /single_schedule/1
+  # GET /single_schedule/1.json
+  def single_schedule
+    @schedule = Schedule.find(params[:id])
+    render :layout => false
+  end
+
   def custom_json_for(value)
     schedules = value.map do |schedule|
       { :title => schedule.subject_name + ' - ' + schedule.place_name,

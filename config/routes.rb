@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :places
 
   get 'asesorias' => 'schedules#consult_by_teacher'
+  get 'single_schedule/:id' => 'schedules#single_schedule'
 
   resources :login
   post  'login/index'

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Asesor&iacute;as FCQ</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'open-iconic-master/font/css/open-iconic-bootstrap.css', media: 'all'%>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body style="overflow:hidden;">
+    <div class="row" style="padding: 10px 10px 10px 10px;">
+      <div class="col-sm-12">
+        <div class="card card-body bg-light">
+          <p>
+            <strong>Materia:</strong>
+            <%= Subject.find(@schedule.IdSubject).Name %>
+          </p>
+
+          <p>
+            <strong>Cuenta del Maestro:</strong>
+            <%= Teacher.find(@schedule.TeacherAccount).TeacherUser %> (<%= Teacher.find(@schedule.TeacherAccount).Name%> <%= Teacher.find(@schedule.TeacherAccount).LastName%>)
+          </p>
+
+          <p>
+            <strong>Lugar:</strong>
+            <%= Place.find(@schedule.IdPlace).Name %>
+          </p>
+
+          <p>
+            <strong>Dia:</strong>
+            <%= case @schedule.Day 
+                when 1
+                  "Lunes"
+                when 2
+                  "Martes"
+                when 3
+                  "Miercoles"
+                when 4
+                  "Jueves"
+                when 5
+                  "Viernes"
+                end%>
+          </p>
+
+          <p>
+            <strong>Inicio:</strong>
+            <%= @schedule.BeginHour %>
+          </p>
+
+          <p>
+            <strong>Fin:</strong>
+            <%= @schedule.EndHour %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
