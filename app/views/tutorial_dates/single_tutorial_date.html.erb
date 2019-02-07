@@ -15,13 +15,22 @@
       <div class="col-sm-12">
         <div class="card card-body bg-light">
           <p>
-            <strong>Matricula:</strong>
-            <%= @tutorial_date.StudentRegister %>
+            <strong>Materia:</strong>
+            <%= @subject.Name %>
           </p>
 
           <p>
-            <strong>Id Horario:</strong>
-            <%= @tutorial_date.IdShedule %>
+            <strong>Maestro:</strong>
+            <%= @teacher.Name + " " + @teacher.LastName + " " + @teacher.SecondLastName %>
+          </p>
+
+          <p>
+            <strong>Alumno:</strong>
+            <%if @student != nil%>
+              <%= @tutorial_date.StudentRegister.to_s + " - " + @student.Name + " " + @student.LastName + " " + @student.SecondLastName%>
+            <%else%>
+              <%= @tutorial_date.StudentRegister %> - Alumno no encontrado...
+            <%end%>
           </p>
 
           <p>

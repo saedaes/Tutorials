@@ -83,6 +83,10 @@ class TutorialDatesController < ApplicationController
   # GET /single_schedule/1.json
   def single_tutorial_date
     @tutorial_date = TutorialDate.find(params[:id])
+    @student = Student.find_by(Register: @tutorial_date.StudentRegister)
+    @schedule = Schedule.find(@tutorial_date.IdShedule)
+    @subject = Subject.find(@schedule.IdSubject)
+    @teacher = Teacher.find(@schedule.TeacherAccount)
     render :layout => false
   end
 
