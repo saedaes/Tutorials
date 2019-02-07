@@ -73,7 +73,7 @@ class TutorialDatesController < ApplicationController
         :start => tutorial_date.beginhour,
         :end => tutorial_date.endhour,
         :id => tutorial_date.id,
-        :allDay => true
+        :allDay => false
       }
     end
     tutorial_dates.to_json
