@@ -14,8 +14,9 @@ Rails.application.routes.draw do
   root to: redirect('/home/index')
   resources :places
 
-  get 'asesorias' => 'schedules#consult_by_teacher'
-  get 'single_schedule/:id' => 'schedules#single_schedule'
+  get 'asesorias' => 'tutorial_dates#consult_by_teacher'
+  get 'single_tutorial_date/:id' => 'tutorial_dates#single_tutorial_date'
+  get 'logout' => 'login#destroy'
 
   resources :login
   post  'login/index'

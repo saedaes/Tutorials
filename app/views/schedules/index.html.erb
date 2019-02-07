@@ -1,37 +1,39 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Asesor&iacute;as Disponibles</h1>
-<table class="table table-striped table-bordered">
-  <thead>
-    <tr>
-      <th>Materia</th>
-      <th>Cuenta_Maestro</th>
-      <th>Lugar</th>
-      <th>D&iacute;a</th>
-      <th>Hora_Inicio</th>
-      <th>Hora_Fin</th>
-      <th colspan="3">Opciones</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @schedules.each do |schedule| %>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered">
+    <thead>
       <tr>
-        <td><%= Subject.find(schedule.IdSubject).Name %></td>
-        <td><%= Teacher.find(schedule.TeacherAccount).TeacherUser %></td>
-        <td><%= Place.find(schedule.IdPlace).Name %></td>
-        <td><%= schedule.Day %></td>
-        <td><%= schedule.BeginHour %></td>
-        <td><%= schedule.EndHour %></td>
+        <th>Materia</th>
+        <th>Cuenta_Maestro</th>
+        <th>Lugar</th>
+        <th>D&iacute;a</th>
+        <th>Hora_Inicio</th>
+        <th>Hora_Fin</th>
+        <th colspan="3">Opciones</th>
+      </tr>
+    </thead>
 
-        <td style="text-align:center;"><%= link_to schedule, style: 'color:#0056b3;' do%> <span class="oi oi-eye"></span> <%end%></td>
-        <td style="text-align:center;"><%= link_to edit_schedule_path(schedule), style: 'color:#0056b3;' do%> <span class="oi oi-pencil"></span> <%end%></td>
-        <td style="text-align:center;"><%= link_to schedule, method: :delete, data: { confirm: 'Estas seguro?' }, style: 'color:#0056b3;' do%> <span class="oi oi-trash"></span> <%end%></td>
-         
-     </tr>
-    <% end %>
-  </tbody>
-</table>
+    <tbody>
+      <% @schedules.each do |schedule| %>
+        <tr>
+          <td><%= Subject.find(schedule.IdSubject).Name %></td>
+          <td><%= Teacher.find(schedule.TeacherAccount).TeacherUser %></td>
+          <td><%= Place.find(schedule.IdPlace).Name %></td>
+          <td><%= schedule.Day %></td>
+          <td><%= schedule.BeginHour %></td>
+          <td><%= schedule.EndHour %></td>
+
+          <td style="text-align:center;"><%= link_to schedule, style: 'color:#0056b3;' do%> <span class="oi oi-eye"></span> <%end%></td>
+          <td style="text-align:center;"><%= link_to edit_schedule_path(schedule), style: 'color:#0056b3;' do%> <span class="oi oi-pencil"></span> <%end%></td>
+          <td style="text-align:center;"><%= link_to schedule, method: :delete, data: { confirm: 'Estas seguro?' }, style: 'color:#0056b3;' do%> <span class="oi oi-trash"></span> <%end%></td>
+           
+       </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <br>
 

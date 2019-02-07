@@ -61,6 +61,31 @@ class TutorialDatesController < ApplicationController
     end
   end
 
+  def consult_by_teacher
+    @teacher = params[:TeacherAccount]
+    @schedule = TutorialDate.select('"tutorial_dates"."id", "schedules"."IdSubject", "subjects"."Name" AS subject_name, "places"."Name" AS place_name, "tutorial_dates"."Date" + ("schedules"."BeginHour" ::time) AS BeginHour, "tutorial_dates"."Date" + ("schedules"."BeginHour" ::time) AS EndHour').joins('INNER JOIN "schedules" ON "tutorial_dates"."IdShedule" = "schedules"."id" INNER JOIN "subjects" ON "schedules"."IdSubject" = "subjects"."id" INNER JOIN "places" ON "schedules"."IdPlace" = "places"."id"').where('"schedules"."TeacherAccount" =\''  + @teacher + '\'')
+    render :json => custom_json_for(@schedule)
+  end
+
+  def custom_json_for(value)
+    tutorial_dates = value.map do |tutorial_date|
+      { :title => tutorial_date.subject_name + ' - ' + tutorial_date.place_name,
+        :start => tutorial_date.beginhour,
+        :end => tutorial_date.endhour,
+        :id => tutorial_date.id,
+        :allDay => true
+      }
+    end
+    tutorial_dates.to_json
+  end
+
+  # GET /single_schedule/1
+  # GET /single_schedule/1.json
+  def single_tutorial_date
+    @tutorial_date = TutorialDate.find(params[:id])
+    render :layout => false
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tutorial_date

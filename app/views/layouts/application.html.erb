@@ -4,6 +4,7 @@
     <title>Asesor&iacute;as FCQ</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'open-iconic-master/font/css/open-iconic-bootstrap.css', media: 'all'%>
@@ -15,7 +16,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="/home/index">
         <%= image_tag "fcqLogo2.png", :width=> 30, :height=> 30%>
-        STCQ
+        STFCQ
       </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -34,30 +35,35 @@
            
           </div>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="oi oi-clipboard"></span> Catalogos
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to teachers_path, class:'dropdown-item' do%><span class="oi oi-briefcase"></span> Maestros<%end%>
-            <%= link_to students_path, class:'dropdown-item' do%><span class="oi oi-person"></span> Alumnos<%end%>
-            <%= link_to users_path, class:'dropdown-item' do%><span class="oi oi-people"></span> Usuarios<%end%>
-            <%= link_to places_path, class:'dropdown-item' do%><span class="oi oi-compass"></span> Lugares<%end%>
-            <%= link_to subjects_path, class:'dropdown-item' do%><span class="oi oi-document"></span> Materias<%end%>
-            <%= link_to profiles_path, class:'dropdown-item' do%><span class="oi oi-tag"></span> Perfiles<%end%>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="oi oi-list"></span> Asignaciones
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to teacher_places_path, class:'dropdown-item' do%><span class="oi oi-map-marker"></span> Asignar Maestro a Lugar<%end%>
-            <%= link_to teacher_subjects_path, class:'dropdown-item' do%><span class="oi oi-graph"></span> Asignar Maestro a Materia<%end%>
-          </div>
-        </li>
+        <%if session[:is_admin]%>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="oi oi-clipboard"></span> Catalogos
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to teachers_path, class:'dropdown-item' do%><span class="oi oi-briefcase"></span> Maestros<%end%>
+              <%= link_to students_path, class:'dropdown-item' do%><span class="oi oi-person"></span> Alumnos<%end%>
+              <%= link_to users_path, class:'dropdown-item' do%><span class="oi oi-people"></span> Usuarios<%end%>
+              <%= link_to places_path, class:'dropdown-item' do%><span class="oi oi-compass"></span> Lugares<%end%>
+              <%= link_to subjects_path, class:'dropdown-item' do%><span class="oi oi-document"></span> Materias<%end%>
+              <%= link_to profiles_path, class:'dropdown-item' do%><span class="oi oi-tag"></span> Perfiles<%end%>
+            </div>
+          </li>
+        <%end%>
+        <%if session[:is_admin]%>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="oi oi-list"></span> Asignaciones
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to teacher_places_path, class:'dropdown-item' do%><span class="oi oi-map-marker"></span> Asignar Maestro a Lugar<%end%>
+              <%= link_to teacher_subjects_path, class:'dropdown-item' do%><span class="oi oi-graph"></span> Asignar Maestro a Materia<%end%>
+            </div>
+          </li>
+        <%end%>
       </ul>
-      <%= link_to login_index_path, style:'float:right; color: rgba(255, 255, 255, 0.5);' do%><span class="oi oi-power-standby"></span> Salir<%end%>
+      <span style="float:right; color: rgba(255, 255, 255, 0.5); margin-right:10px;">Hola <%=session[:user]%> - <%=session[:name]%> <%=session[:last_name]%> <%=session[:second_last_name]%></span>
+      <%= link_to '/logout', style:'float:right; color: rgba(255, 255, 255, 0.5);' do%><span class="oi oi-power-standby"></span> Salir<%end%>
     </div>
   </nav>
     <div style="padding:10px;">

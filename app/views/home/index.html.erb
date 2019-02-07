@@ -39,6 +39,7 @@
 			locale: 'es',
 			eventLimitText: 'Más...',
 			eventTextColor: 'white',
+			eventColor: 'purple',
 			buttonText:{
 				today:    'Hoy',
 			  	month:    'Mes',
@@ -47,7 +48,7 @@
 			  	list:     'Lista'
 			},
 			events: {
-	            url: '/asesorias?TeacherAccount=1',
+	            url: '<%=@url%>',
 	            error: function() {
 	                alert('error');
 	            }
@@ -69,7 +70,7 @@
 	});
 
 	$('#scheduleModal').on('show.bs.modal',function(e){
-  		$(this).find('iframe').attr('src','/single_schedule/' + $('#scheduleModal').attr('data-id'));
+  		$(this).find('iframe').attr('src','/single_tutorial_date/' + $('#scheduleModal').attr('data-id'));
 	})
 </script>
 

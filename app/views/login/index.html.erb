@@ -4,6 +4,7 @@
     <title>Asesor&iacute;as FCQ</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'open-iconic-master/font/css/open-iconic-bootstrap.css', media: 'all'%>
@@ -12,9 +13,9 @@
 
   <body>
     <div class="wrapper fadeInDown">
-      <% flash.each do |key, value| %>
+      <% if flash[:error] %>
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-          <strong><%= value %></strong> Por favor verifique sus credenciales e intentelo de nuevo
+          <strong><%= flash[:error] %></strong> <%= flash[:message] %>
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -24,18 +25,9 @@
         <!-- Tabs Titles -->
 
         <!-- Icon -->
-        <div class="fadeIn first">
+        <div class="fadeIn first" style="margin-top:10px;">
           <%= image_tag "fcqLogo2.png", :id=>"icon", :alt=>"FCQ Icon" %>
         </div>
-
-        <!-- Login Form 
-      
-        <form>
-          <input type="text" id="txtLogin" class="fadeIn second" name="login" placeholder="Usuario">
-          <input type="password" id="txtPassword" class="fadeIn third" name="pass" placeholder="Password">
-          <a id="btnLogin" href="/home/index" class="fadeIn fourth" style="width:85%">Ingresar</a>
-        </form>
-        -->
 
         <%= form_with model: @user do |f| %>
           <%= f.text_field :txtLogin, class: "fadeIn second", placeholder:"Usuario" %>

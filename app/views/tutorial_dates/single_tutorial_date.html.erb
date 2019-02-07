@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Asesor&iacute;as FCQ</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'open-iconic-master/font/css/open-iconic-bootstrap.css', media: 'all'%>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body style="overflow:hidden;">
+    <div class="row" style="padding: 10px 10px 10px 10px;">
+      <div class="col-sm-12">
+        <div class="card card-body bg-light">
+          <p>
+            <strong>Matricula:</strong>
+            <%= @tutorial_date.StudentRegister %>
+          </p>
+
+          <p>
+            <strong>Id Horario:</strong>
+            <%= @tutorial_date.IdShedule %>
+          </p>
+
+          <p>
+            <strong>Fecha:</strong>
+            <%= @tutorial_date.Date %>
+          </p>
+
+          <p>
+            <strong>Temas:</strong>
+            <%= @tutorial_date.Topic %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
