@@ -11,27 +11,45 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :Matricula %>
-    <%= form.text_field :StudentRegister %>
+  <div class="row">
+    <div class="col-sm-1">
+      <%= form.label :Matricula %>
+    </div>
+    <div class="col-sm-3">
+      <%= form.text_field :StudentRegister, class:"form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :Id_Horario %>
-    <%= form.text_field :IdShedule %>
+  <div class="row" style="margin-top:5px;">
+    <div class="col-sm-1">
+      <%= form.label :Id_Horario %>
+    </div>
+    <div class="col-sm-3">
+      <%= form.text_field :IdShedule, class:"form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :Fecha %>
-    <%= form.date_select :Date %>
+  <div class="row" style="margin-top:5px;">
+    <div class="col-sm-1">
+      <%= form.label :Fecha %>
+    </div>
+    <div class="col-sm-3">
+      <%= form.text_field :Date, class:"form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :Temas %>
-    <%= form.text_field :Topic %>
+  <div class="row" style="margin-top:5px;">
+    <div class="col-sm-1">
+      <%= form.label :Temas %>
+    </div>
+    <div class="col-sm-11">
+      <%= form.text_area :Topic, class:"form-control" %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="row" style="margin-top:10px;">
+    <div class="col-sm-12">
+      <%= form.submit "Programar Asesoria", :class => "btn btn-outline-success", style:'width:200px;' %>
+    </div>
   </div>
 <% end %>

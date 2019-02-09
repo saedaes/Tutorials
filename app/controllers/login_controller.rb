@@ -3,15 +3,14 @@ class LoginController < ApplicationController
   skip_before_action :require_login, only: [:index, :destroy]
 
   def index
-  		if request.post?		
-				
-				if @access = Teacher.exists?(TeacherUser: params[:txtLogin])
+  		if request.post?					
+				if Teacher.exists?(TeacherUser: params[:txtLogin])
 					define_properties(params[:txtLogin], "T")
 					redirect_to :controller => 'home'
-				elsif @access = Student.exists?(Register: params[:txtLogin])
+				elsif Student.exists?(Register: params[:txtLogin])
 					define_properties(params[:txtLogin], "S")
 					redirect_to :controller => 'home'
-				elsif @access = User.exists?(UserAccount: params[:txtLogin])
+				elsif User.exists?(UserAccount: params[:txtLogin])
 					define_properties(params[:txtLogin], "U")
 					redirect_to :controller => 'home'
 				else	
@@ -58,7 +57,7 @@ class LoginController < ApplicationController
   	session[:last_name] = @student.LastName
   	session[:second_last_name] = @student.SecondLastName
   	session[:is_admin] = false
-  	session[:is_assesor] = @student.IsAssesor
+  	session[:is_assesor] = @student.IsAssessor
   end
 
   def get_user_properties(login)

@@ -39,6 +39,11 @@
           </p>
 
           <p>
+            <strong>Horario:</strong>
+            <%= @schedule.BeginHour.strftime('%H:%M') + " - " +  @schedule.EndHour.strftime('%H:%M')%>
+          </p>
+
+          <p>
             <strong>Temas:</strong>
             <%= @tutorial_date.Topic %>
           </p>

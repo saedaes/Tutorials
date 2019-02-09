@@ -52,6 +52,9 @@
     	border: none;
     	padding: 1px 1px 1px 1px;
 	}
+	.fc-event-dot{
+		background-color: #00bcd4;
+	}
 	.fc-state-active{
 		box-shadow: unset !important;
 	}
@@ -108,6 +111,10 @@
 	        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miercoles','Jueves', 'Viernes', 'Sabado'],
 	        dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
 	        allDayText: 'Todo el dia',
+	        allDaySlot: false,
+	        fixedWeekCount: false,
+	        minTime: '07:00:00',
+	        maxTime: '21:00:00',
 
 			buttonText:{
 				today:    'Hoy',
@@ -127,13 +134,15 @@
 			    $('#scheduleModal').modal();
 			},
 			eventRender: function(eventObj, $el) {
-		      $el.popover({
-		        title: "Información",
-		        content: eventObj.title,
-		        trigger: 'hover',
-		        placement: 'top',
-		        container: 'body'
-		      });
+				if(!isMobile()){
+			    	$el.popover({
+			    		title: "Información",
+			        	content: eventObj.title,
+			        	trigger: 'hover',
+			        	placement: 'top',
+			        	container: 'body'
+			      	});
+		    	}
 		    }
 		});
 	});
@@ -141,6 +150,11 @@
 	$('#scheduleModal').on('show.bs.modal',function(e){
   		$(this).find('iframe').attr('src','/single_tutorial_date/' + $('#scheduleModal').attr('data-id'));
 	})
+
+	function isMobile(){
+		var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+		return isMobile;
+	}
 </script>
 
 

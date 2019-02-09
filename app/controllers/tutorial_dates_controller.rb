@@ -4,7 +4,16 @@ class TutorialDatesController < ApplicationController
   # GET /tutorial_dates
   # GET /tutorial_dates.json
   def index
-    @tutorial_dates = TutorialDate.all
+    if session[:is_admin]
+      @tutorial_dates = TutorialDate.all
+    else
+      if session[:who] == "S"
+        @tutorial_dates = TutorialDate.where(:StudentRegister => session[:user])
+      elsif session[:who] == "T"
+        @tutorial_dates = TutorialDate.joins('INNER JOIN "schedules" ON "tutorial_dates"."IdShedule" = "schedules"."id"').where('"schedules"."TeacherAccount" = \'' + session[:teacher_id].to_s + '\'')
+      end
+    end
+
   end
 
   # GET /tutorial_dates/1
@@ -63,7 +72,7 @@ class TutorialDatesController < ApplicationController
 
   def consult_by_teacher
     @teacher = params[:TeacherAccount]
-    @schedule = TutorialDate.select('"tutorial_dates"."id", "schedules"."IdSubject", "subjects"."Name" AS subject_name, "places"."Name" AS place_name, "tutorial_dates"."Date" + ("schedules"."BeginHour" ::time) AS BeginHour, "tutorial_dates"."Date" + ("schedules"."BeginHour" ::time) AS EndHour').joins('INNER JOIN "schedules" ON "tutorial_dates"."IdShedule" = "schedules"."id" INNER JOIN "subjects" ON "schedules"."IdSubject" = "subjects"."id" INNER JOIN "places" ON "schedules"."IdPlace" = "places"."id"').where('"schedules"."TeacherAccount" =\''  + @teacher + '\'')
+    @schedule = TutorialDate.select('"tutorial_dates"."id", "schedules"."IdSubject", "subjects"."Name" AS subject_name, "places"."Name" AS place_name, "tutorial_dates"."Date" + ("schedules"."BeginHour" ::time) AS BeginHour, "tutorial_dates"."Date" + ("schedules"."EndHour" ::time) AS EndHour').joins('INNER JOIN "schedules" ON "tutorial_dates"."IdShedule" = "schedules"."id" INNER JOIN "subjects" ON "schedules"."IdSubject" = "subjects"."id" INNER JOIN "places" ON "schedules"."IdPlace" = "places"."id"').where('"schedules"."TeacherAccount" =\''  + @teacher + '\'')
     render :json => custom_json_for(@schedule)
   end
 
