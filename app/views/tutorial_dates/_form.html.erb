@@ -1,13 +1,10 @@
 <%= form_with(model: tutorial_date, local: true) do |form| %>
   <% if tutorial_date.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(tutorial_date.errors.count, "error") %> prohibited this tutorial_date from being saved:</h2>
-
-      <ul>
-      <% tutorial_date.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong><%= tutorial_date.errors.count%> errores no permitieron que la asesoria se programara!</strong> Ningun campo puede estar vacio.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
   <% end %>
 
@@ -16,16 +13,23 @@
       <%= form.label :Matricula %>
     </div>
     <div class="col-sm-3">
-      <%= form.text_field :StudentRegister, class:"form-control" %>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <a id="lnkStudents" href="#" data-toggle="modal" data-target="#studentsModal"><span class="oi oi-magnifying-glass"></span></a>
+          </div>
+        </div>
+        <%= form.text_field :StudentRegister, class:"form-control"%>
+      </div>
     </div>
   </div>
 
   <div class="row" style="margin-top:5px;">
     <div class="col-sm-1">
-      <%= form.label :Id_Horario %>
+      <%= form.label :Horario %>
     </div>
     <div class="col-sm-3">
-      <%= form.text_field :IdShedule, class:"form-control" %>
+      <%= form.text_field :IdShedule, class:"form-control", :readonly => true, :"data-toggle"=>:modal, :"data-target"=>:"#scheduleModal", style:"cursor:pointer;" %>
     </div>
   </div>
 
@@ -34,7 +38,7 @@
       <%= form.label :Fecha %>
     </div>
     <div class="col-sm-3">
-      <%= form.text_field :Date, class:"form-control" %>
+      <%= form.text_field :Date, class:"form-control", :readonly => true,  style:"cursor:pointer;" %>
     </div>
   </div>
 
@@ -53,3 +57,78 @@
     </div>
   </div>
 <% end %>
+
+<!-- Modal -->
+<div class="modal fade" id="studentsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document" style="min-width:80%;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Buscar alumno</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <iframe src="#" style="border:none; width:95%; height:400px;"></iframe>
+      </div>
+      <div class="modal-footer">
+        <button id="btnCloseStudent" type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="scheduleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document" style="min-width:80%;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Selecciona un horario</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <iframe src="#" style="border:none; width:95%; height:400px;"></iframe>
+      </div>
+      <div class="modal-footer">
+        <button id="btnCloseSchedule" type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+    });
+
+    $('#scheduleModal').on('show.bs.modal',function(e){
+        $(this).find('iframe').attr('src','/select_schedule');
+    });
+
+    $('#studentsModal').on('show.bs.modal',function(e){
+        $(this).find('iframe').attr('src','/select_student');
+    })
+
+    function getSchedule(id, day){
+      var days = [0,1,2,3,4,5,6];
+      days.splice(days.indexOf(day),1);
+
+      $('#tutorial_date_IdShedule').val(id);
+      $('#tutorial_date_Date').val('');
+      $('#tutorial_date_Date').datepicker('destroy');
+      $('#tutorial_date_Date').datepicker({
+          language:'es',
+          daysOfWeekDisabled:days,
+          autoclose:true,
+          startDate: new Date()
+      });
+    }
+
+    function getStudent(student){
+      $('#tutorial_date_StudentRegister').val(student);
+    }
+</script>
+

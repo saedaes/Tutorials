@@ -61,6 +61,11 @@ class StudentsController < ApplicationController
     end
   end
 
+  def select
+    @students = Student.all
+    render :layout => false
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_student

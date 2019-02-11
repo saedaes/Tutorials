@@ -15,10 +15,25 @@ class SchedulesController < ApplicationController
   # GET /schedules/new
   def new
     @schedule = Schedule.new
+    @days = Hash.new
+    @days["Lunes"] = 1
+    @days["Martes"] = 2
+    @days["Miercoles"] = 3
+    @days["Jueves"] = 4
+    @days["Viernes"] = 5
+    @days["Sabado"] = 6
   end
 
   # GET /schedules/1/edit
   def edit
+    @schedule = Schedule.new
+    @days = Hash.new
+    @days["Lunes"] = 1
+    @days["Martes"] = 2
+    @days["Miercoles"] = 3
+    @days["Jueves"] = 4
+    @days["Viernes"] = 5
+    @days["Sabado"] = 6
   end
 
   # POST /schedules
@@ -65,6 +80,11 @@ class SchedulesController < ApplicationController
     @teacher = params[:TeacherAccount]
     @schedule = Schedule.select('"schedules"."id", "schedules"."IdSubject", "subjects"."Name" AS subject_name, "places"."Name" AS place_name, "schedules","BeginHour", "schedules"."EndHour"').joins('INNER JOIN "subjects" ON "schedules"."IdSubject" = "subjects"."id" INNER JOIN "places" ON "schedules"."IdPlace" = "places"."id"').where(:TeacherAccount => @teacher)
     render :json => custom_json_for(@schedule)
+  end
+
+  def select
+    @schedules = Schedule.all
+    render :layout => false
   end
 
   private

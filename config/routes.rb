@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get 'asesorias' => 'tutorial_dates#consult_by_teacher'
   get 'single_tutorial_date/:id' => 'tutorial_dates#single_tutorial_date'
   get 'logout' => 'login#destroy'
+  get 'select_schedule' => 'schedules#select'
+  get 'select_student' => 'students#select'
 
   resources :login
   post  'login/index'

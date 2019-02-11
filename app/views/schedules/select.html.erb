@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Asesor&iacute;as FCQ</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= stylesheet_link_tag 'open-iconic-master/font/css/open-iconic-bootstrap.css', media: 'all'%>
+      <%= stylesheet_link_tag 'date-picker/bootstrap-datepicker.css', media: 'all'%>
+      <%= stylesheet_link_tag 'data-table/datatables.css', media: 'all'%>
+
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'date-picker/bootstrap-datepicker.js', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'date-picker/locales/bootstrap-datepicker.es.min.js', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'data-table/datatables.min.js', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <div class="table-responsive">
+      <table id="#schedulesTable" class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Materia</th>
+            <th>Maestro</th>
+            <th>Lugar</th>
+            <th>D&iacute;a</th>
+            <th>Hora Inicio</th>
+            <th>Hora Fin</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @schedules.each do |schedule| %>
+            <tr>
+              <td class="id"><%= schedule.id %></td>
+              <td><%= Subject.find(schedule.IdSubject).Name %></td>
+              <td><%= Teacher.find(schedule.TeacherAccount).Name + " " + Teacher.find(schedule.TeacherAccount).LastName + " " + Teacher.find(schedule.TeacherAccount).SecondLastName %></td>
+              <td><%= Place.find(schedule.IdPlace).Name %></td>
+              <td class="day" data-day="<%=schedule.Day%>"><%= dayofweek(schedule.Day) %></td>
+              <td><%= schedule.BeginHour.to_s(:time) %></td>
+              <td><%= schedule.EndHour.to_s(:time) %></td>
+              <td><button type="button" class="btn btn-outline-info btn-select">Seleccionar</button></td>
+           </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('.table').DataTable({
+          "info": false,
+          "lengthChange": false,
+          language:{
+            search:"Buscar",
+            emptyTable:"Sin Datos",
+            zeroRecords:"No se econtraron registros",
+            paginate:{
+              first:"Inicio",
+              previous:"Anterior",
+              next:"Siguiente",
+              last:"Final" 
+            }
+          }
+        });
+      });
+
+      $('.btn-select').click(function(){
+        var schedule = $(this).parent().parent().find('.id').text();
+        var day = $(this).parent().parent().find('.day').data("day");
+
+        parent.getSchedule(schedule, day);
+
+        $('#btnCloseSchedule', window.parent.document).trigger('click');
+      });
+    </script>
+  </body>
+</html>

@@ -14,5 +14,4 @@ class ApplicationController < ActionController::Base
 		  	redirect_to :controller => 'login'
 		end
 	end
-
 end

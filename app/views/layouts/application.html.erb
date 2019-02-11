@@ -8,8 +8,13 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'open-iconic-master/font/css/open-iconic-bootstrap.css', media: 'all'%>
+    <%= stylesheet_link_tag 'date-picker/bootstrap-datepicker.css', media: 'all'%>
+    <%= stylesheet_link_tag 'data-table/datatables.css', media: 'all'%>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'date-picker/bootstrap-datepicker.js', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'date-picker/locales/bootstrap-datepicker.es.min.js', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'data-table/datatables.min.js', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
@@ -62,7 +67,7 @@
           </li>
         <%end%>
       </ul>
-      <span style="float:right; color: rgba(255, 255, 255, 0.5); margin-right:10px;">Hola <%=session[:user]%> - <%=session[:name]%> <%=session[:last_name]%> <%=session[:second_last_name]%></span>
+      <span style="float:right; color: rgba(255, 255, 255, 0.5); margin-right:10px;"><%=session[:user]%> - <%=session[:name]%> <%=session[:last_name]%> <%=session[:second_last_name]%></span>
       <%= link_to '/logout', style:'float:right; color: rgba(255, 255, 255, 0.5);' do%><span class="oi oi-power-standby"></span> Salir<%end%>
     </div>
   </nav>

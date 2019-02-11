@@ -10,6 +10,11 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 # Precompile additional assets.
 Rails.application.config.assets.precompile += %w( open-iconic-master/font/css/open-iconic-bootstrap.css )
+Rails.application.config.assets.precompile += %w( date-picker/bootstrap-datepicker.css )
+Rails.application.config.assets.precompile += %w( date-picker/bootstrap-datepicker.js )
+Rails.application.config.assets.precompile += %w( date-picker/locales/bootstrap-datepicker.es.min.js )
+Rails.application.config.assets.precompile += %w( data-table/datatables.css )
+Rails.application.config.assets.precompile += %w( data-table/datatables.min.js )
 
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
