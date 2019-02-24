@@ -29,7 +29,7 @@
       <%= form.label :Horario %>
     </div>
     <div class="col-sm-3">
-      <%= form.text_field :IdShedule, class:"form-control", :readonly => true, :"data-toggle"=>:modal, :"data-target"=>:"#scheduleModal", style:"cursor:pointer;" %>
+      <%= form.text_field :IdShedule, class:"form-control", :readonly => true, :"data-toggle"=>:modal, :"data-target"=>:"#scheduleModal", style:"cursor:pointer;", :"placeholder"=>:"click para seleccionar un horario" %>
     </div>
   </div>
 
@@ -38,7 +38,7 @@
       <%= form.label :Fecha %>
     </div>
     <div class="col-sm-3">
-      <%= form.text_field :Date, class:"form-control", :readonly => true,  style:"cursor:pointer;" %>
+      <%= form.text_field :Date, class:"form-control", :readonly => true,  style:"cursor:pointer;", :"placeholder"=>:"click para seleccionar una fecha" %>
     </div>
   </div>
 
@@ -69,7 +69,10 @@
         </button>
       </div>
       <div class="modal-body">
-        <iframe src="#" style="border:none; width:95%; height:400px;"></iframe>
+        <div style="text-align:center;">
+          <%= image_tag "loading.gif", :class=>"loading", :width=>300, :height=>300%>
+        </div>
+        <iframe src="#" style="border:none; width:95%; height:400px; display:none;"></iframe>
       </div>
       <div class="modal-footer">
         <button id="btnCloseStudent" type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -89,7 +92,10 @@
         </button>
       </div>
       <div class="modal-body">
-        <iframe src="#" style="border:none; width:95%; height:400px;"></iframe>
+        <div style="text-align:center;">
+          <%= image_tag "loading.gif", :class=>"loading", :width=>300, :height=>300%>
+        </div>
+        <iframe src="#" style="border:none; width:95%; height:400px; display:none;"></iframe>
       </div>
       <div class="modal-footer">
         <button id="btnCloseSchedule" type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -100,16 +106,26 @@
 
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        
-    });
-
     $('#scheduleModal').on('show.bs.modal',function(e){
+        $(this).find('iframe').hide();
         $(this).find('iframe').attr('src','/select_schedule');
+        $('.loading').show();
+        
+        setTimeout(function(){
+          $('.loading').hide();
+          $('#scheduleModal').find('iframe').show();
+        }, 2000);
     });
 
     $('#studentsModal').on('show.bs.modal',function(e){
+        $(this).find('iframe').hide();
         $(this).find('iframe').attr('src','/select_student');
+        $('.loading').show();
+        
+        setTimeout(function(){
+          $('.loading').hide();
+          $('#studentsModal').find('iframe').show();
+        }, 2000);
     })
 
     function getSchedule(id, day){

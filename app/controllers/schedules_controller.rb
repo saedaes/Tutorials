@@ -87,6 +87,13 @@ class SchedulesController < ApplicationController
     render :layout => false
   end
 
+  # GET /schedules/1
+  # GET /schedules/1.json
+  def single
+    @schedule = Schedule.find(params[:id])
+    render :layout => false
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_schedule

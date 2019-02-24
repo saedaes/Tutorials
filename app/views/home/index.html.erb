@@ -65,7 +65,7 @@
 
 <div class="row">
 	<div class="col-sm-12">
-		<h1>Sistema de tutorias FCQ</h1>
+		<h1>Sistema De Asesorias FCQ</h1>
 	</div>
 </div>
 
@@ -86,6 +86,9 @@
         </button>
       </div>
       <div class="modal-body">
+      	<div style="text-align:center;">
+          <%= image_tag "loading.gif", :class=>"loading", :width=>300, :height=>300%>
+        </div>
         <iframe src="#" style="border:none; width:95%; height:300px;"></iframe>
       </div>
       <div class="modal-footer">
@@ -148,7 +151,14 @@
 	});
 
 	$('#scheduleModal').on('show.bs.modal',function(e){
-  		$(this).find('iframe').attr('src','/single_tutorial_date/' + $('#scheduleModal').attr('data-id'));
+  		$(this).find('iframe').hide();
+        $(this).find('iframe').attr('src','/single_tutorial_date/' + $('#scheduleModal').attr('data-id'));
+        $('.loading').show();
+        
+        setTimeout(function(){
+          $('.loading').hide();
+          $('#scheduleModal').find('iframe').show();
+        }, 2000);
 	})
 
 	function isMobile(){

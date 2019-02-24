@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   get 'logout' => 'login#destroy'
   get 'select_schedule' => 'schedules#select'
   get 'select_student' => 'students#select'
+  get 'schedules/single/:id' => 'schedules#single'
+  get 'students/single/:Register' => 'students#single'
 
   resources :login
   post  'login/index'
