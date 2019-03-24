@@ -11,22 +11,28 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :Id_Materia %>
+  <div class="row">
+    <div class="col-sm-2">
+      <%= form.label :Materia %>
+    </div>
     <div class="col-sm-2">
       <%= form.select :IdSubject, Subject.all.map{|t| [t.Name, t.id]}, {}, {class: "form-control"}  %>
     </div>
   </div>
 
-  <div class="field">
-    <%= form.label :Maestro %>
+  <div class="row">
+    <div class="col-sm-2">
+      <%= form.label :Maestro %>
+    </div>
     <div class="col-sm-2">
       <%= form.select :TeacherAccount, Teacher.all.map{|t| [t.Name, t.id]}, {}, {class: "form-control"}  %>
     </div>
   </div>
 
-  <div class="field">
-    <%= form.label :Id_Lugar %>
+  <div class="row">
+    <div class="col-sm-2">
+      <%= form.label :Lugar %>
+    </div>
     <div class="col-sm-2">
       <%= form.select :IdPlace, Place.all.map{|t| [t.Name, t.id]}, {}, {class: "form-control"}  %>
     </div>
@@ -39,12 +45,12 @@
 
   <div class="field">
     <%= form.label :Hora_Inicio %>
-    <%= form.datetime_select :BeginHour %>
+    <%= form.time_select :BeginHour, {}, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :Hora_Fin %>
-    <%= form.datetime_select :EndHour %>
+    <%= form.time_select :EndHour %>
   </div>
 
   <div class="actions">

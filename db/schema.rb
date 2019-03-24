@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_24_052832) do
+ActiveRecord::Schema.define(version: 2019_02_24_200612) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(version: 2019_02_24_052832) do
     t.string "TeacherAccount"
     t.integer "IdPlace"
     t.integer "Day"
-    t.datetime "BeginHour"
-    t.datetime "EndHour"
+    t.time "BeginHour"
+    t.time "EndHour"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
