@@ -66,6 +66,13 @@ class StudentsController < ApplicationController
     render :layout => false
   end
 
+  # GET /students/1
+  # GET /students/1.json
+  def single
+    @student = Student.find_by Register:params[:Register]
+    render :layout => false
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_student
