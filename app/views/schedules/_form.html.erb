@@ -42,18 +42,27 @@
     <div class="col-sm-2">
       <%= form.label :Dia %>
     </div>
-    <div class="col-sm-10"
-    <%= form.select :Day, @days, {},class: "form-control"%>
+    <div class="col-sm-2">
+      <%= form.select :Day, @days, {}, {class: "form-control"}%>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :Hora_Inicio %>
-    <%= form.time_select :BeginHour, {}, class: "form-control" %>
+  <div class="row">
+    <div class="col-sm-2">
+      <%= form.label :Hora_Inicio %>
+    </div>
+    <div class="col-sm-2">
+      <%= form.time_select :BeginHour %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :Hora_Fin %>
-    <%= form.time_select :EndHour %>
+  <div class="row">
+    <div class="col-sm-2">
+      <%= form.label :Hora_Fin %>
+    </div>
+    <div class="col-sm-2">
+      <%= form.time_select :EndHour %>
+    </div>
   </div>
 
   <div class="actions">
