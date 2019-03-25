@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Nueva Asesoria Programada</h1>
+
+    <div style="position: relative; display: flex; flex-direction: column; min-width: 0; word-wrap: break-word; background-color: #f8f9fa; background-clip: border-box; border: 1px solid rgba(0, 0, 0, 0.125); border-radius: 0.25rem; margin-top:10px; padding: 5px;">
+    	<ul>
+	    	<li>
+				<b>Materia:</b> <%= @subject.Name %>
+			</li>
+			<li>
+				<b>Alumno:</b> <%if @student != nil%>
+				  <%= @tutorial_date.StudentRegister.to_s + " - " + @student.Name + " " + @student.LastName + " " + @student.SecondLastName%>
+				<%else%>
+				  <%= @tutorial_date.StudentRegister %> - Alumno no encontrado...
+				<%end%>
+			</li>			
+			<li>
+				<b>Temas:</b> <%= @tutorial_date.Topic %>
+			</li>
+			<li>
+				<b>Fecha:</b> <%= @tutorial_date.Date %>
+			</li>
+			<li>
+				<b>Horario:</b> <%= @schedule.BeginHour.strftime('%H:%M') + " - " +  @schedule.EndHour.strftime('%H:%M')%>
+			</li>			
+		</ul>
+    </div>
+
+  </body>
+</html>

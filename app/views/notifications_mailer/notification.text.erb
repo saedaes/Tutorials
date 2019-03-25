@@ -1,0 +1,8 @@
+Nueva Asesoria Programada
+
+Materia: <%= @subject.Name %>
+Maestro: <%= @user.Name + " " + @user.LastName + " " + @user.SecondLastName %>
+Alumno: <%if @student != nil%><%= @tutorial_date.StudentRegister.to_s + " - " + @student.Name + " " + @student.LastName + " " + @student.SecondLastName%><%else%><%= @tutorial_date.StudentRegister %> - Alumno no encontrado...<%end%>
+Fecha: <%= @tutorial_date.Date %>
+Horario: <%= @schedule.BeginHour.strftime('%H:%M') + " - " +  @schedule.EndHour.strftime('%H:%M')%>
+Temas: <%= @tutorial_date.Topic %> 

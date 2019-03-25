@@ -37,6 +37,14 @@ class TutorialDatesController < ApplicationController
 
     respond_to do |format|
       if @tutorial_date.save
+        @student = Student.find_by(Register: @tutorial_date.StudentRegister)
+        @schedule = Schedule.find(@tutorial_date.IdShedule)
+        @subject = Subject.find(@schedule.IdSubject)
+        @teacher = Teacher.find(@schedule.TeacherAccount)
+
+        # Sends email to user when user is created.
+        NotificationsMailer.notification(@teacher, @tutorial_date, @student, @schedule, @subject).deliver
+
         format.html { redirect_to @tutorial_date, notice: 'Tutorial date was successfully created.' }
         format.json { render :show, status: :created, location: @tutorial_date }
       else
